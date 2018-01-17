@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot([  // registers the Router Service Provider, declares the router directive and exposes the configured routes
       { path: 'products', component: ProductListComponent}, // specifies the path and a reference to the component
-      { path: 'prducts/:id', component: ProductDetailComponent},
+      { path: 'products/:id', component: ProductDetailComponent},
       { path: 'welcome', component: WelcomeComponent},
       { path: '', redirectTo: 'welcome', pathMatch: 'full'}, //default routes that directs to our welcome component
       { path: '**', redirectTo: 'welcome', pathMatch: 'full'} //wildcard path in case the URL doesnt match any path defined in the configuration

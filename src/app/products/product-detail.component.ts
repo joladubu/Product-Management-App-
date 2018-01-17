@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from './product';
+import { Route } from '@angular/router/src/config';
 
 @Component({
   selector: 'pm-product-detail',
@@ -11,15 +12,17 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
   product: IProduct;
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute,
+              private _router: Router) { }
 
   ngOnInit() {
   
       let id = +this._route.snapshot.paramMap.get('id');
-      this.pageTitle += `:${id}`;
+      // + is used to convert the string id to numeric id
+      this.pageTitle += `: ${id}`;
       this.product = 
         {
-            "productId": 1,
+            "productId": id,
             "productName": "Leaf Rake",
             "productCode": "GDN-0011",
             "releaseDate": "March 19, 2016",
@@ -30,5 +33,8 @@ export class ProductDetailComponent implements OnInit {
         }
     }
 
+    onBack() {
+      this._router.navigate(['/products']);
+    }
   }
 
